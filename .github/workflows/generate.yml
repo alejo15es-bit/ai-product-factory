@@ -32,8 +32,6 @@ jobs:
           HF_API_KEY: ${{ secrets.HF_API_KEY }}
       - name: Create Landing
         run: python scripts/create_landing.py
-        env:
-          PROBLEM: ${{ github.event.inputs.problem }}
       - name: Upload Kit
         uses: actions/upload-artifact@v4
         with:
@@ -45,9 +43,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: .
           publish_branch: gh-pages
-      - name: Notify Telegram
-        run: |
-          curl -s -X POST https://api.telegram.org/bot${{ secrets.TG_BOT_TOKEN }}/sendMessage \
-          -d chat_id=${{ secrets.TG_CHAT_ID }} \
-          -d parse_mode=HTML \
-          -d text="✅ <b>Producto listo para:</b> ${{ github.event.inputs.problem }}%0A🌐 Landing: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}%0A📦 Descarga assets en Actions → Artifacts"
