@@ -1,0 +1,32 @@
+import os
+
+problem = os.getenv('PROBLEM', 'Digital Burnout')
+
+html = f"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AI Product Kit - {problem}</title>
+<style>
+body{{font-family:sans-serif;margin:0;padding:2rem;background:#f5f5f5}}
+.container{{max-width:800px;margin:0 auto;background:white;padding:3rem;border-radius:12px}}
+h1{{color:#4F46E5}}
+.btn{{display:inline-block;padding:1rem 2rem;background:#10B981;color:white;text-decoration:none;border-radius:8px;margin:1rem 0}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🔥 AI Product Kit</h1>
+<p><strong>Problem:</strong> {problem}</p>
+<p>✅ 3 Audio Sessions (ElevenLabs)</p>
+<p>✅ 4 Images (Stability AI)</p>
+<p>✅ Music Tracks (Hugging Face)</p>
+<p>✅ PDF Guide (PDFMonkey)</p>
+<a href="#" class="btn">Buy Now - $27</a>
+</div>
+</body>
+</html>"""
+
+with open('index.html', 'w') as f:
+    f.write(html)
+print("✅ Landing page creada: index.html")
